@@ -1,9 +1,9 @@
-# fly.toml app configuration file generated for horescope on 2024-12-06T19:03:09+01:00
+# fly.toml app configuration file generated for horescope-solitary-glade-6047 on 2024-12-06T19:05:25+01:00
 #
 # See https://fly.io/docs/reference/configuration/ for information about how to use this file.
 #
 
-app = 'horescope'
+app = 'horescope-solitary-glade-6047'
 primary_region = 'arn'
 
 [http_service]
