@@ -1,17 +1,19 @@
-# fly.toml app configuration file generated for horescope-solitary-glade-6047 on 2024-12-06T19:05:25+01:00
+# fly.toml app configuration file generated for horescope on 2024-12-06T19:18:53+01:00
 #
 # See https://fly.io/docs/reference/configuration/ for information about how to use this file.
 #
 
-app = 'horescope-solitary-glade-6047'
+app = 'horescope'
 primary_region = 'arn'
+
+[build]
 
 [http_service]
   internal_port = 8080
   force_https = true
-  auto_stop_machines = 'stop'
-  auto_start_machines = true
-  min_machines_running = 0
+  auto_stop_machines = true
+  auto_start_machines = false
+  min_machines_running = 1
   processes = ['app']
 
 [[vm]]
