@@ -1,18 +1,15 @@
-FROM python:3.12.8
-
-ENV PYTHONUNBUFFERED=1
+FROM python:3.12-slim
 
 WORKDIR /app
 
-COPY requirements.txt /app/
-RUN pip install --no-cache-dir -r requirements.txt
+# Create venv inside the container
+RUN python -m venv /opt/venv
+ENV PATH="/opt/venv/bin:$PATH"
 
-# If you want to use a virtual environment, uncomment the next lines
-# RUN python -m venv venv
-# ENV PATH="/app/venv/bin:$PATH"
+# Rest of your Dockerfile remains the same
+COPY requirements.txt .
+RUN pip install -r requirements.txt
 
-# Copy the rest of the application code
-COPY . /app/
+COPY . .
 
-# Set the command to run your bot
-CMD ["python", "-m", "src.bot.bot"]
+CMD ["/bin/bash", "-c", "source /opt/venv/bin/activate && python -m src.main"]
